@@ -1,0 +1,25 @@
+# dbt
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# Environment
+.env
+*.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Credentials - NEVER commit these
+profiles.yml

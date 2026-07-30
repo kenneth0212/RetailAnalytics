@@ -1,5 +1,3 @@
--- Sources configuration for TPC-H sample data
--- Co-authored with CoCo
 version: 2
 
 sources:

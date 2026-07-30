@@ -1,7 +1,3 @@
--- Schema documentation for mart models
--- Co-authored with CoCo
-version: 2
-
 models:
   - name: dim_customer
     description: "Customer dimension with denormalized nation and region"
