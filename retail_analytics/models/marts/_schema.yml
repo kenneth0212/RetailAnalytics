@@ -1,0 +1,79 @@
+-- Schema documentation for mart models
+-- Co-authored with CoCo
+version: 2
+
+models:
+  - name: dim_customer
+    description: "Customer dimension with denormalized nation and region"
+    columns:
+      - name: customer_key
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: market_segment
+        description: "AUTOMOBILE, BUILDING, FURNITURE, HOUSEHOLD, MACHINERY"
+      - name: nation_name
+        description: "Customer's country"
+      - name: region_name
+        description: "Customer's world region"
+
+  - name: dim_part
+    description: "Product/part dimension"
+    columns:
+      - name: part_key
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: brand
+        description: "Product brand (Brand#11 through Brand#55)"
+      - name: part_type
+        description: "Product type classification"
+
+  - name: dim_supplier
+    description: "Supplier dimension with denormalized geography"
+    columns:
+      - name: supplier_key
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: nation_name
+        description: "Supplier's country"
+      - name: region_name
+        description: "Supplier's world region"
+
+  - name: dim_date
+    description: "Date dimension for time intelligence (1992-1998)"
+    columns:
+      - name: date_key
+        description: "Primary key (DATE type)"
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_order_items
+    description: "Fact table at line-item grain with revenue calculations"
+    columns:
+      - name: order_key
+        description: "FK to orders"
+        tests:
+          - not_null
+      - name: customer_key
+        description: "FK to dim_customer"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customer')
+              field: customer_key
+      - name: part_key
+        description: "FK to dim_part"
+        tests:
+          - not_null
+      - name: supplier_key
+        description: "FK to dim_supplier"
+        tests:
+          - not_null
+      - name: net_revenue
+        description: "extended_price * (1 - discount) * (1 + tax)"

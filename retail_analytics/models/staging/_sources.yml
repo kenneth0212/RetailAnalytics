@@ -1,0 +1,26 @@
+-- Sources configuration for TPC-H sample data
+-- Co-authored with CoCo
+version: 2
+
+sources:
+  - name: tpch
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+    description: "TPC-H benchmark dataset at scale factor 1"
+    tables:
+      - name: CUSTOMER
+        description: "Customer master data"
+      - name: ORDERS
+        description: "Order header records"
+      - name: LINEITEM
+        description: "Order line item details (grain of transactions)"
+      - name: PART
+        description: "Product/part catalog"
+      - name: SUPPLIER
+        description: "Supplier master data"
+      - name: PARTSUPP
+        description: "Part-supplier relationship with cost/availability"
+      - name: NATION
+        description: "Nation reference (25 countries)"
+      - name: REGION
+        description: "Region reference (5 world regions)"

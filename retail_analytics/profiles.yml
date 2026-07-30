@@ -1,0 +1,13 @@
+retail_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: lnrdopd-nl58105
+      user: Carding0212
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: ACCOUNTADMIN
+      database: RETAIL_ANALYTICS
+      warehouse: COMPUTE_WH
+      schema: PUBLIC
+      threads: 4
