@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: int_order_items_summary
+    description: "Order-grain aggregation of line items with revenue metrics"
+    columns:
+      - name: order_key
+        description: "Primary key - one row per order"
+        tests:
+          - unique
+          - not_null
+
+  - name: int_customer_orders
+    description: "Customer-grain summary of order history and lifetime value"
+    columns:
+      - name: customer_key
+        description: "Primary key - one row per customer"
+        tests:
+          - unique
+          - not_null
+      - name: lifetime_revenue
+        description: "Total net revenue across all orders"

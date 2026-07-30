@@ -1,0 +1,4 @@
+status_code,status_name,status_description
+O,Open,Order is open and not yet fulfilled
+F,Fulfilled,Order has been completely fulfilled
+P,Partial,Order is partially fulfilled

@@ -1,0 +1,6 @@
+priority_code,priority_level,priority_description
+1-URGENT,1,Highest priority - immediate processing
+2-HIGH,2,High priority - expedited processing
+3-MEDIUM,3,Standard priority
+4-NOT SPECIFIED,4,Default priority level
+5-LOW,5,Lowest priority - batch processing

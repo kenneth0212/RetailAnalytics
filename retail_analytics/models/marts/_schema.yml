@@ -1,3 +1,5 @@
+version: 2
+
 models:
   - name: dim_customer
     description: "Customer dimension with denormalized nation and region"
@@ -48,6 +50,24 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: fct_orders
+    description: "Fact table at order-header grain with aggregated metrics"
+    columns:
+      - name: order_key
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: customer_key
+        description: "FK to dim_customer"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customer')
+              field: customer_key
+      - name: net_revenue
+        description: "Total net revenue for the order"
 
   - name: fct_order_items
     description: "Fact table at line-item grain with revenue calculations"
